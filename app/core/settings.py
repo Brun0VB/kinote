@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
+    'authentication.apps.AuthenticationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'tailwind',
-    'theme',
+    # 'theme',
 ]
 
 # TAILWIND_APP_NAME = 'theme'
 # INTERNAL_IPS = ["127.0.0.1"]
 
-# AUTH_USER_MODEL = 'users.User'  # Formato: 'nome_do_app.NomeDoModelo'
+AUTH_USER_MODEL = 'authentication.CustomUser'  # Formato: 'nome_do_app.NomeDoModelo'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
