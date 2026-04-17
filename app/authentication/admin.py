@@ -21,10 +21,13 @@ class CustomUserAdmin(UserAdmin):
 
     # Campos exibidos na página de edição
     fieldsets = UserAdmin.fieldsets + (
-        ('Dados extras', {'fields': ('bio', 'avatar')}),
+        ('Dados extras', {'fields': ('foto_url',)}),
     ) # type: ignore
 
     # Campos exibidos na página de criação
-    add_fieldsets = UserAdmin.add_fieldsets + (
-        ('Dados extras', {'fields': ('email', 'bio')}),
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username',  'email',  'password1', 'password2'),
+        }),
     )

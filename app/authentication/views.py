@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
+
 from .forms import CustomUserCreationForm
 
 # Create your views here.
@@ -24,14 +25,14 @@ class CustomLoginView(LoginView):
 
 
 class RegisterView(CreateView):
-    """View de registro de novo usuário."""
+    """New user register view"""
     model = User
     form_class = CustomUserCreationForm
     template_name = 'authentication/register.html'
     success_url = reverse_lazy('authentication:login')
 
     def dispatch(self, request, *args, **kwargs):
-        """Redireciona usuário autenticado para o dashboard."""
+        """Redirects authenticated user"""
         if request.user.is_authenticated:
             return redirect('authentication:index')
         return super().dispatch(request, *args, **kwargs)
@@ -42,15 +43,7 @@ class RegisterView(CreateView):
 
 
 def logout_view(request):
-    """Logout via POST — boa prática de segurança (evita CSRF)."""
+    """Logout via POST"""
     if request.method == 'POST':
         logout(request)
     return redirect('authentication:login')
-
-
-# @login_required
-# def dashboard(request):
-#     """Área protegida — só acessível para usuários autenticados."""
-#     return render(request, 'authentication/dashboard.html', {
-#         'user': request.user
-#     })
