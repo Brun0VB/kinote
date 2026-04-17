@@ -1,7 +1,4 @@
-from django.http import HttpResponse
-from django.template import loader
-from django.contrib.auth import login, logout, get_user_model
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
