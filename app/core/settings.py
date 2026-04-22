@@ -39,11 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'tailwind',
-    # 'theme',
+    #'theme'
 ]
 
-# TAILWIND_APP_NAME = 'theme'
-# INTERNAL_IPS = ["127.0.0.1"]
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ["127.0.0.1"]
 
 AUTH_USER_MODEL = 'authentication.CustomUser'  # Formato: 'nome_do_app.NomeDoModelo'
 
