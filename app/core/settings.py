@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'tailwind',
     'widget_tweaks',
-    #'theme'
+    'theme'
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -133,3 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #ADDED
 LOGIN_REDIRECT_URL = '/authentication/index'
+
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"

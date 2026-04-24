@@ -1,3 +1,8 @@
+{% load tailwind_tags %}
+{% tailwind_css %}
+
+<h1 class="text-4xl font-georama text-blue-600">kinote</h1>
+
 <form method="post">
   {% csrf_token %}
   {{ form }}
