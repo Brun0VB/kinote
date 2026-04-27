@@ -1,11 +1,40 @@
 {% load tailwind_tags %}
 {% tailwind_css %}
+{% load widget_tweaks %}
 
-<h1 class="text-4xl font-georama text-blue-600">kinote</h1>
+<!DOCTYPE html>
+<html>
 
-<form method="post">
-  {% csrf_token %}
-  {{ form }}
-  <button type="submit">Entrar</button>
-</form>
-<a href="{% url 'authentication:register' %}">Criar conta</a>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+</head>
+
+<body>
+<div class="min-h-screen flex flex-col bg-slate-800 ">
+    <nav>
+      <h1 class="font-museo my-0 text-white w-2xl">Kinote</h1>
+    </nav>
+    <div class="flex-1 text-white flex justify-center items-center font-georama">
+      <form method="post" class="flex flex-col min-w-40">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          {{ form.username|add_class:"form-control !bg-slate-300" }}
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label ">Password</label>
+          {{ form.password|add_class:"form-control !bg-slate-300" }}
+        </div>
+        <button class="btn !bg-violet-500 mb-3" type="submit">Submit</button>
+        <p>Ainda não tem sua conta? <a href="{% url 'authentication:register' %}" class="!text-lime-300">Crie aqui</a></p>
+      </form>
+    </div>
+</div>
+</body>
+
+</html>
