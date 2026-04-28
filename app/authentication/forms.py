@@ -29,3 +29,23 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = User
         fields = ('username', 'email')
+
+# Tela de edição do usuário
+class CustomUserUpdateForm(UserChangeForm):
+    # Sobrescrevemos o campo password para que ele não apareça ou 
+    # apareça apenas como o link de "trocar senha" nativo do Django
+    password = None 
+
+    class Meta:
+        model = User
+        # Selecionamos apenas o que o usuário pode mudar no Kinote
+        fields = ('username', 'email')
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Estilização Tailwind para os campos
+        # for field_name, field in self.fields.items():
+        #     field.widget.attrs.update({
+        #         'class': 'w-full bg-slate-700 border border-slate-600 text-white rounded-lg p-2.5 focus:ring-amber-500 focus:border-amber-500 mb-4',
+        #         'placeholder': field.label
+        #     })

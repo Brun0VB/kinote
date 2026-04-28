@@ -1,11 +1,11 @@
 from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
-
-
-from .forms import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import CustomUserCreationForm, CustomUserUpdateForm
 
 # Create your views here.
 def index(request):
@@ -47,3 +47,14 @@ def logout_view(request):
     if request.method == 'POST':
         logout(request)
     return redirect('authentication:login')
+
+# Tela de edição do usuário
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = CustomUserUpdateForm
+    template_name = 'authentication/profile.html'
+    success_url = reverse_lazy('home') # Nome da sua URL da Home
+
+    def get_object(self, queryset=None):
+        # Ignora IDs na URL e sempre retorna o usuário atual da sessão
+        return self.request.user
